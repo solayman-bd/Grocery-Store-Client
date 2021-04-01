@@ -14,7 +14,13 @@ const AddProducts = () => {
       price: info.price,
       imageURL: imageURL,
     };
-    console.log(submittedData);
+    console.log(submittedData.imageURL);
+    const url = `http://localhost:5000/addProducts`;
+    fetch(url, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(submittedData),
+    }).then((res) => console.log(res));
   };
   const handleImageUpload = (event) => {
     const imageData = new FormData();
@@ -25,6 +31,7 @@ const AddProducts = () => {
       .post("https://api.imgbb.com/1/upload", imageData)
       .then(function (response) {
         setIMageURL(response.data.data.display_url);
+        console.log(response.data.data.display_url);
       })
       .catch(function (error) {
         console.log(error);

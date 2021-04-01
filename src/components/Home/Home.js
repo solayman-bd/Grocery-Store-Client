@@ -1,9 +1,27 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { Spinner } from "react-bootstrap";
+
+import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import Cart from "../Cart/Cart";
 
 const Home = () => {
+  const [productsInfo, setProductsInfo] = useState([]);
+  useEffect(() => {
+    fetch(`http://localhost:5000/allProductsDetails`)
+      .then((res) => res.json())
+      .then((data) => setProductsInfo(data));
+  }, []);
+
   return (
-    <div>
-      <h1>I am from home</h1>
+    <div className="row m-3">
+      {productsInfo.length > 0 ? (
+        productsInfo.map((pd) => <Cart key={pd._id} productDetails={pd}></Cart>)
+      ) : (
+        <Spinner animation="border" role="status">
+          <span className="sr-only">Loading...</span>
+        </Spinner>
+      )}
     </div>
   );
 };
