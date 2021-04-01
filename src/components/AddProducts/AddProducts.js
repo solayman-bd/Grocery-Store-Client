@@ -25,7 +25,7 @@ const AddProducts = () => {
       .then((result) => {
         if (result) {
           alert("Product Added Successfully");
-          window.location.reload();
+          // window.location.reload();
         }
       });
   };
