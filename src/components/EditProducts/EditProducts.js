@@ -13,7 +13,9 @@ const EditProducts = () => {
       .catch((err) => console.log(err));
   }, []);
   const deleteItem = (id) => {
-    fetch(`delete/${id}`, { method: "DELETE" })
+    fetch(`https://mighty-crag-80917.herokuapp.com/delete/${id}`, {
+      method: "DELETE",
+    })
       .then((res) => res.json())
       .then((result) => {
         if (result) {
