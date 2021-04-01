@@ -8,7 +8,7 @@ import Cart from "../Cart/Cart";
 const Home = () => {
   const [productsInfo, setProductsInfo] = useState([]);
   useEffect(() => {
-    fetch(`http://localhost:5000/allProductsDetails`)
+    fetch(`https://mighty-crag-80917.herokuapp.com/allProductsDetails`)
       .then((res) => res.json())
       .then((data) => setProductsInfo(data));
   }, []);

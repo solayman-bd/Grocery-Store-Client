@@ -10,7 +10,7 @@ const CheckOut = (props) => {
   const [productsInfo, setProductsInfo] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/allProductsDetails`)
+    fetch(`https://mighty-crag-80917.herokuapp.com/allProductsDetails`)
       .then((res) => res.json())
       .then((data) => {
         setProductsInfo(data);
@@ -26,7 +26,7 @@ const CheckOut = (props) => {
     const { name, imageURL, price } = foundData[0];
     const handleBuying = () => {
       const newBuyingDetails = { ...loggedInUser, name, imageURL, price };
-      fetch(`http://localhost:5000/addBuying`, {
+      fetch(`https://mighty-crag-80917.herokuapp.com/addBuying`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(newBuyingDetails),

@@ -15,12 +15,19 @@ const AddProducts = () => {
       imageURL: imageURL,
     };
     console.log(submittedData.imageURL);
-    const url = `http://localhost:5000/addProducts`;
+    const url = `https://mighty-crag-80917.herokuapp.com/addProducts`;
     fetch(url, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(submittedData),
-    }).then((res) => console.log(res));
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        if (result) {
+          alert("Product Added Successfully");
+          window.location.reload();
+        }
+      });
   };
   const handleImageUpload = (event) => {
     const imageData = new FormData();

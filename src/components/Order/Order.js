@@ -5,7 +5,7 @@ const Order = () => {
   const [loggedInUser, setLoggedInUser] = useContext(UserContext);
   const [customerDetails, setCustomerDetails] = useState([]);
   useEffect(() => {
-    fetch(`http://localhost:5000/customerInfo`)
+    fetch(`https://mighty-crag-80917.herokuapp.com/customerInfo`)
       .then((res) => res.json())
       .then((data) => setCustomerDetails(data));
   }, []);
