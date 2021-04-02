@@ -13,13 +13,13 @@ const EditProducts = () => {
       .catch((err) => console.log(err));
   }, []);
   const deleteItem = (id) => {
-    fetch(`https://mighty-crag-80917.herokuapp.com/delete/${id}`, {
+    fetch(`http://localhost:5000/delete/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
       .then((result) => {
         if (result) {
-          console.log("deleted");
+          alert("Deleted Successfully");
         }
       });
   };
