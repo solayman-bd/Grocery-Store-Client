@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
+import { Button, Card } from "react-bootstrap";
 import { UserContext } from "../../App";
 
 const Order = () => {
@@ -16,16 +17,23 @@ const Order = () => {
   console.log(foundData);
   return (
     <div>
-      <h1>Order Details:</h1>
+      <h1 className="text-center mb-3">Order Details:</h1>
       {foundData.length > 0 && (
         <div>
-          <h3>User Email:{foundData[0].email}</h3>
+          <div className="text-success text-center mx-auto">
+            <h4>User Name: {loggedInUser.name}</h4>
+            <h5>User Email:{foundData[0].email}</h5>
+          </div>
 
-          {foundData.map((data) => (
-            <li>
-              Name: {data.name}, Price: {data.price || 20}
-            </li>
-          ))}
+          <div className="mx-auto w-25 mt-3 text-danger">
+            <ol>
+              {foundData.map((data) => (
+                <li>
+                  Name: {data.name}, Price: {data.price || 20} BDT
+                </li>
+              ))}
+            </ol>
+          </div>
         </div>
       )}
     </div>
