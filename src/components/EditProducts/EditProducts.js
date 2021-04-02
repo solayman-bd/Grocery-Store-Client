@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
-import { browserHistory } from "react-router";
 
 const EditProducts = () => {
+  const [editPageRedirection, setEditPageRedirection] = useState(false);
   const [productsInfo, setProductsInfo] = useState([]);
   useEffect(() => {
     fetch(`https://mighty-crag-80917.herokuapp.com/allProductsDetails`)
@@ -11,7 +11,7 @@ const EditProducts = () => {
         setProductsInfo(data);
       })
       .catch((err) => console.log(err));
-  }, []);
+  }, [editPageRedirection]);
   const deleteItem = (id) => {
     fetch(`https://mighty-crag-80917.herokuapp.com/delete/${id}`, {
       method: "DELETE",
@@ -20,9 +20,11 @@ const EditProducts = () => {
       .then((result) => {
         if (result) {
           alert("Deleted Successfully");
+          setEditPageRedirection(true);
         }
       });
   };
+
   return (
     <div>
       <ol>

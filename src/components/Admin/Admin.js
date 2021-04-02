@@ -1,10 +1,15 @@
 import React, { useState } from "react";
 import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
+
 import AddProducts from "../AddProducts/AddProducts";
 import EditProducts from "../EditProducts/EditProducts";
 
 const Admin = () => {
   const [manageProducts, setManageProducts] = useState(true);
+
+  const editProducts = () => {
+    setManageProducts(false);
+  };
 
   return (
     <div className="row">
@@ -18,10 +23,7 @@ const Admin = () => {
           </button>
         </h4>
         <h4>
-          <button
-            onClick={() => setManageProducts(false)}
-            className="btn btn-secondary"
-          >
+          <button onClick={() => editProducts()} className="btn btn-secondary">
             Edit Products
           </button>
         </h4>
